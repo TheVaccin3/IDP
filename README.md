@@ -129,6 +129,7 @@ To test our code, I used the AD2 to send a signal directly to the Arduino to eli
 
 ![Figure 11 shows the phase between the two signals at different phase angles.](/images/Picture11.png)
 <br /> Figure 11 shows the phase between the two signals at different phase angles.
+
 ![Figure 12: What the display shows when the program is running.](/images/Picture12.png)
 <br /> Figure 12: What the display shows when the program is running.
 

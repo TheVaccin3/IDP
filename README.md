@@ -7,10 +7,8 @@ In this project, I created a circuit where 2 microphones are used to identify th
 
 The purpose of this project is to be able to create an audio direction finder that requires the use of both hardware and software components. This project will demonstrate our understanding of implementing filters and will test our problem-solving skills. The project will involve creating algorithms, creating equations that relate to our previous physics and math classes, and understanding filters.
 
-| ![](RackMultipart20220312-4-9rf5rl_html_7fb0e5b64dc46ce0.png)
- |
-| --- |
-| Figure 1: A representation of how the mics will be able to detect the speaker and what the angle represents |
+![Figure 1: A representation of how the mics will be able to detect the speaker and what the angle represents](images/Picture1.png)
+<br /> Figure 1: A representation of how the mics will be able to detect the speaker and what the angle represents
 
 ##
 
@@ -19,10 +17,8 @@ The purpose of this project is to be able to create an audio direction finder th
 
 The concept of operation comes in two parts, hardware, and software. The hardware part of this assignment requires us to filter the signal and then amplify it to reach a desired voltage. The software part requires us to create code that reads the filtered and amplified signals and then calculate the phase between them to give us the angle between the source and the microphones.
 
-| ![](RackMultipart20220312-4-9rf5rl_html_9615b700e978f0e4.png)
- |
-| --- |
-| Figure 2: Our block diagram of the hardware and software components of the project |
+![Figure 2: Our block diagram of the hardware and software components of the project](images/Picture2.png)
+<br /> Figure 2: Our block diagram of the hardware and software components of the project
 
 To progress through the project, I planned to implement each part of the project in order that I would use them to calculate the angle, which is the same as the order of the block diagram in Figure 2.
 
@@ -60,25 +56,27 @@ Once the LTspice simulation with the modified values performed how I wanted it t
 
 Since there was no frequency dependent nature of the amplifier, testing this independently of the filter was not necessary. The gain of this op-amp was about 33 V/V. So, with an input of 2.5mV and a gain of ~400 (12\*33), I get our desired 1V output. I used the Network analyser on the AD2 to check this by converting the units to volts instead of the gain and using an input of 10mV (the lowest possible on the ad2).
 
-Figure 3: Filter Wizard Bode Plot ![](RackMultipart20220312-4-9rf5rl_html_b6e4c1ef51c0204f.png)
+![Figure 3: Filter Wizard Bode Plot ](/images/Picture3.png)
+<br /> Figure 3: Filter Wizard Bode Plot 
 
-Figure 4: The circuit schematic that I built for the microphone. On the left is the Band-Pass filter and on the right is the amplifier. ![](RackMultipart20220312-4-9rf5rl_html_ba40473fa850690a.png)
+![Figure 4: The circuit schematic that I built for the microphone. On the left is the Band-Pass filter and on the right is the amplifier](/images/Picture4.png)
+<br /> Figure 4: The circuit schematic that I built for the microphone. On the left is the Band-Pass filter and on the right is the amplifier
 
-![image12.png](RackMultipart20220312-4-9rf5rl_html_b61a8beb0dff3854.gif)
+![Figure 5: The circuit that was built on the breadboard. This circuit also includes the OLED display configuration with the Arduino](/images/Picture5.png)
+<br /> Figure 5: The circuit that was built on the breadboard. This circuit also includes the OLED display configuration with the Arduino.
 
-Figure 5: The circuit that was built on the breadboard. This circuit also includes the OLED display configuration with the Arduino.
+![Figure 6: LTspice Bode plot simulation of the full schematic](/images/Picture6.png)
+<br /> Figure 6: LTspice Bode plot simulation of the full schematic
 
-![](RackMultipart20220312-4-9rf5rl_html_525b54ade081f91.png)
-
-Figure 6: LTspice Bode plot simulation of the full schematic
-
-Figure 7: Bode Plot of real testing on the circuit. The center frequencies were invalid since the gain was out of range. 10mV was the minimum of the AD2. ![](RackMultipart20220312-4-9rf5rl_html_687ae953d15ade81.png)
+![Figure 7: Bode Plot of real testing on the circuit. The center frequencies were invalid since the gain was out of range. 10mV was the minimum of the AD2](/images/Picture7.png)
+<br /> Figure 7: Bode Plot of real testing on the circuit. The center frequencies were invalid since the gain was out of range. 10mV was the minimum of the AD2
 
 ## Code
 
 The secondary component of the project was the software. The software was needed to read the signal, measure its frequency, reject frequencies that are out of range, measure the phase difference, and use that to calculate the angle. Then incorporate the code for the display to show the angle.
 
-Figure 7: The block diagram of the process of developing the code ![](RackMultipart20220312-4-9rf5rl_html_a6b6ec49976bfb2a.png)
+![Figure 7: The block diagram of the process of developing the code](/images/Picture8.png)
+<br /> Figure 7: The block diagram of the process of developing the code
 
 ### Measuring the Frequency and the Difference
 
@@ -109,7 +107,7 @@ if (oldV2 == 0 && newV2 >= 5) { // Falling Edge Calculation
 
 Direction = acos((SOUNDSPEED * timerStop) / micDistance);
 ```
-| Figure 8: Implementation of the rising edge, falling edge, and digital filter, and the angle calculation |
+<br /> Figure 8: Implementation of the rising edge, falling edge, and digital filter, and the angle calculation
 
 ### Using the Display
 
@@ -119,17 +117,20 @@ To get the I2C protocol to work correctly, I first had to figure out the I2C add
 
 To initialize the display, I included the 2 libraries in the code, and then called the function to set up the 1306 display and provide the pin for the reset of the screen. Then, in the setup function, I set up the I2C protocol and give the address of the screen. The title screen and &quot;Angle =&quot; text is printed to get it ready for the loop() which then displays the calculated angle.
 
-Figure 10 shows the circuit diagram for the display ![](RackMultipart20220312-4-9rf5rl_html_2d2e5ce6baaf848b.png)
+![Figure 10 shows the circuit diagram for the display](/images/Picture9.png)
+<br /> Figure 10 shows the circuit diagram for the display 
 
-Figure 12 shows how the display was incorporated into the code ![](RackMultipart20220312-4-9rf5rl_html_d344add67473c973.png)
+![Figure 12 shows how the display was incorporated into the code ](/images/Picture10.png)
+<br /> Figure 12 shows how the display was incorporated into the code 
 
 ## Validation of the Integrated Project
 
 To test our code, I used the AD2 to send a signal directly to the Arduino to eliminate the variable of the circuit. I sent a 900 Hz signal on the 2 different mics and varied the phase to see if the serial monitor would be able to detect the differences. The result is shown in Figure 11. It is very evident that the phase of the recorded signal is matching what I are inputting from the AD2.
 
-Figure 11 shows the phase between the two signals at different phase angles. ![](RackMultipart20220312-4-9rf5rl_html_4999a7db79f77d30.png)
-
-Figure 12: What the display shows when the program is running. ![](RackMultipart20220312-4-9rf5rl_html_90dbc4cc29ac31ea.png)
+![Figure 11 shows the phase between the two signals at different phase angles.](/images/Picture11.png)
+<br /> Figure 11 shows the phase between the two signals at different phase angles.
+![Figure 12: What the display shows when the program is running.](/images/Picture12.png)
+<br /> Figure 12: What the display shows when the program is running.
 
 Unfortunately, I weren&#39;t able to get the code to work to display the angle. This was because the micros() function in the arduino was giving us problems because apparently it was not accurate/precise enough to measure such small differences in time. As a result, I don&#39;t have video or photo proof that the code works to show the angle. However, the diagram shows that our hardware was working as intended and the code does read the frequency. The display also works as intended. The Arduino was able to display the correct output from the microphones on the serial plotter. The problem that occurred revolved around the detection of the phase angle from the signal since the method I used to measure time was inaccurate.
 

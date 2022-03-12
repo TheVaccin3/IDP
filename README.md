@@ -1,5 +1,4 @@
 # Integrated Design Project - Arduino Direction Finder 
-- [Integrated Design Project - Arduino Direction Finder](#integrated-design-project---arduino-direction-finder)
   * [Introduction](#introduction)
   * [High-Level Block Diagram and Order of Operations](#high-level-block-diagram-and-order-of-operations)
   * [Implementation and Testing](#implementation-and-testing)

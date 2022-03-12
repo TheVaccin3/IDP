@@ -111,7 +111,7 @@ Direction = acos((SOUNDSPEED * timerStop) / micDistance);
 
 ### Using the Display
 
-First, I researched different websites and videos to find out how to connect and code the specific OLED display given. I found that because there already exists a library for the display in Arduino, the code was very simple to implement after installing 2 libraries to handle the Adafruit display. So, I installed the \&lt;Adafruit\_GFX.h\&gt; and \&lt;Adafruit\_SSD1306.h\&gt; libraries.
+First, I researched different websites and videos to find out how to connect and code the specific OLED display given. I found that because there already exists a library for the display in Arduino, the code was very simple to implement after installing 2 libraries to handle the Adafruit display. So, I installed the `Adafruit_GFX.h` and `Adafruit_SSD1306.h` libraries.
 
 To get the I2C protocol to work correctly, I first had to figure out the I2C address since it is different for each display model. To find the address, I used the Arduino I2C Address locator program which I found online. This printed the address of the display onto the serial monitor of the arduino which does not rely on the I2C protocol but instead the serial port of the arduino. From there, I tested a simple program that prints the words &quot;Find Audio DIrection&quot; onto the screen. Since the title does not need to be updated and will be static, I put this in the setup function to avoid repeated draw calls when the display did not change.
 

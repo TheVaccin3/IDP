@@ -1,4 +1,15 @@
 # Integrated Design Project - Arduino Direction Finder 
+- [Integrated Design Project - Arduino Direction Finder](#integrated-design-project---arduino-direction-finder)
+  * [Introduction](#introduction)
+  * [High-Level Block Diagram and Order of Operations](#high-level-block-diagram-and-order-of-operations)
+  * [Implementation and Testing](#implementation-and-testing)
+  * [Filter and Amplifier](#filter-and-amplifier)
+  * [Code](#code)
+    + [Measuring the Frequency and the Difference](#measuring-the-frequency-and-the-difference)
+    + [Using the Display](#using-the-display)
+  * [Validation of the Integrated Project](#validation-of-the-integrated-project)
+  * [Conclusion](#conclusion)
+
 ## Introduction
 
 Audio Direction-finding is a relevant skill in today&#39;s world and can be used to find the direction of an incoming cell phone call. It can also be useful for maps on phones. If a device can accurately find the location of a cell tower, it would be able to more precisely figure out its own location. Another useful use case would be wifi technology. If the router can find the location of a device, it can use beamforming to send the wifi signal more reliably to a specific device and reduce interference.
